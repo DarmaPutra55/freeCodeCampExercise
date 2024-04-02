@@ -1,0 +1,22 @@
+{
+  "name": "fcc-exercise-tracker",
+  "version": "0.0.1",
+  "description": "API project for freeCodeCamp",
+  "main": "index.mjs",
+  "type": "module",
+  "scripts": {
+    "start": "node index.mjs"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.11.0",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^8.6.0",
+    "express": "^4.17.1"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^3.1.0",
+    "prisma": "^5.11.0"
+  }
+}
