@@ -56,6 +56,17 @@ app.post("/api/users", async function (req, res) {
   });
 });
 
+app.get("/api/users", async function (req, res) {
+  const users = await prisma.user.findMany();
+  const formattedUsers = users.map((user) => {
+    return {
+      username: user.username,
+      _id: user.id.toString(),
+    };
+  });
+  return res.json(formattedUsers);
+});
+
 app.post("/api/users/:_id/exercises", async function (req, res) {
   const exercise_post = req.body;
   const id = parseInt(req.params._id);
@@ -69,7 +80,7 @@ app.post("/api/users/:_id/exercises", async function (req, res) {
     data: {
       description: exercise_post.description,
       duration: parseInt(exercise_post.duration),
-      date: exercise_post.date ? new Date(exercise_post.date) : new Date.now(),
+      date: exercise_post.date ? new Date(exercise_post.date) : new Date(),
       user: {
         connect: {
           id: id,
